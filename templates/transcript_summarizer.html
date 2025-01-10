@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipSynth</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles1.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('Landing')}}">Home</a></li>
+                <li><a href="{{url_for('Transcript')}}">ClipSynth</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="center-content">
+        <h2>ClipSynth</h2>
+        <form id="transcript-form" action="{{ url_for('summarize') }}" method="POST" enctype="multipart/form-data">
+            <label for="input-type">Select Input Type:</label>
+            <div class="radio-group">
+                <input type="radio" id="input-link" name="input_type" value="link" onchange="showInputField()" checked>
+                <label for="input-link">Video Link</label>
+                <input type="radio" id="input-text" name="input_type" value="text" onchange="showInputField()">
+                <label for="input-text">Paste Transcript</label>
+                <input type="radio" id="input-file" name="input_type" value="file" onchange="showInputField()">
+                <label for="input-file">Upload File</label>
+            </div>
+        
+            <div id="link-input" style="display: block;">
+                <label for="video-link">Video Link:</label>
+                <input type="text" id="video-link" name="video_link" placeholder="Enter YouTube Video Link" oninput="showVideoPreview()">
+                <div id="video-preview" style="margin-top: 10px;"></div>
+            </div>
+        
+            <div id="text-input" style="display: none;">
+                <label for="transcript-text">Paste Transcript:</label>
+                <textarea id="transcript-text" name="transcript_text" placeholder="Paste transcript here"></textarea>
+            </div>
+        
+            <div id="file-input" style="display: none;">
+                <label for="transcript-file">Upload Transcript / Video / Audio File:</label>
+                <input type="file" id="transcript-file" name="transcript_file" accept=".txt,.mp4,.avi,.mov,.mkv,.wav,.mp3">
+            </div><br>
+        
+            <button type="submit">Generate Summary</button>
+        </form>
+
+        {% if summary %}
+            <div id="summary-result">
+                <h3>Summary:</h3>
+                <p>{{ summary }}</p>
+            </div>
+            <div id="audio-result">
+                <h3>Audio Summary:</h3>
+                <audio controls>
+                    <source src="{{ url_for('uploaded_file', filename=audio_file) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% elif error %}
+            <div id="summary-result">
+                <p style="color: red;">{{ error }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">AI Tools</a>
+            <a href="#">YouTube Summarizer</a>
+            <a href="#">Python Code Generator</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <p>© 2024 AI Tools. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showInputField() {
+            const inputType = document.querySelector('input[name="input_type"]:checked').value;
+            document.getElementById('link-input').style.display = inputType === 'link' ? 'block' : 'none';
+            document.getElementById('text-input').style.display = inputType === 'text' ? 'block' : 'none';
+            document.getElementById('file-input').style.display = inputType === 'file' ? 'block' : 'none';
+        }
+        function showVideoPreview() {
+            const videoLink = document.getElementById('video-link').value;
+            const videoPreview = document.getElementById('video-preview');
+
+            // Extract video ID from YouTube link
+            const videoID = videoLink.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/) ||
+                            videoLink.match(/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^?]+)/);
+            if (videoID && videoID[1]) {
+                videoPreview.innerHTML = `
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID[1]}" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoPreview.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClipSynth</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles1.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{url_for('Landing')}}">Home</a></li>
+                <li><a href="{{url_for('Transcript')}}">ClipSynth</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>ClipSynth</h2>
+        <form id="transcript-form" action="{{ url_for('summarize') }}" method="POST" enctype="multipart/form-data">
+            <label for="input-type">Select Input Type:</label><br>
+            <input type="radio" id="input-link" name="input_type" value="link" onchange="showInputField()" checked>
+            <label for="input-link">Video Link</label><br>
+            <input type="radio" id="input-text" name="input_type" value="text" onchange="showInputField()">
+            <label for="input-text">Paste Transcript</label><br>
+            <input type="radio" id="input-file" name="input_type" value="file" onchange="showInputField()">
+            <label for="input-file">Upload File</label><br><br>
+        
+            <div id="link-input" style="display: block;">
+                <label for="video-link">Video Link:</label>
+                <input type="text" id="video-link" name="video_link" placeholder="Enter YouTube Video Link" oninput="showVideoPreview()">
+                <div id="video-preview" style="margin-top: 10px;"></div>
+            </div>
+        
+            <div id="text-input" style="display: none;">
+                <label for="transcript-text">Paste Transcript:</label>
+                <textarea id="transcript-text" name="transcript_text" placeholder="Paste transcript here"></textarea>
+            </div>
+        
+            <div id="file-input" style="display: none;">
+                <label for="transcript-file">Upload Transcript / Video / Audio File:</label>
+                <input type="file" id="transcript-file" name="transcript_file" accept=".txt,.mp4,.avi,.mov,.mkv,.wav,.mp3">
+            </div><br>
+        
+            <button type="submit">Generate Summary</button>
+        </form>
+
+        {% if summary %}
+            <div id="summary-result" style="margin-top: 20px;">
+                <h3>Summary:</h3>
+                <p>{{ summary }}</p>
+            </div>
+            <div id="audio-result" style="margin-top: 20px;">
+                <h3>Audio Summary:</h3>
+                <audio controls>
+                    <source src="{{ url_for('uploaded_file', filename=audio_file) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% elif error %}
+            <div id="summary-result">
+                <p style="color: red;">{{ error }}</p>
+            </div>
+        {% endif %}
+    </section>
+
+    <script>
+        function showInputField() {
+            const inputType = document.querySelector('input[name="input_type"]:checked').value;
+            document.getElementById('link-input').style.display = inputType === 'link' ? 'block' : 'none';
+            document.getElementById('text-input').style.display = inputType === 'text' ? 'block' : 'none';
+            document.getElementById('file-input').style.display = inputType === 'file' ? 'block' : 'none';
+        }
+        function showVideoPreview() {
+            const videoLink = document.getElementById('video-link').value;
+            const videoPreview = document.getElementById('video-preview');
+
+            // Extract video ID from YouTube link
+            const videoID = videoLink.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/) ||
+                            videoLink.match(/(?:https?:\/\/)?(?:www\.)?youtu\.be\/([^?]+)/);
+            if (videoID && videoID[1]) {
+                videoPreview.innerHTML = `
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoID[1]}" 
+                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                `;
+            } else {
+                videoPreview.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html> -->

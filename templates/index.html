@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tools: Unleash Your Potential</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero" style="background: url('/static/images/Index1.png') no-repeat center center/cover;">
+    <!-- <section class="hero"> -->
+        <div class="hero-content">
+            <h1>AI Tools: Unleash Your Potential</h1>
+            <p>Unlock the future of efficiency and creativity with our powerful AI tools, designed to help you achieve more.</p>
+            <button class="cta-button" onclick="scrollToFeatures()">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="feature feature-left">
+            <img src="{{ url_for('static', filename='/images/2_YouTube Transcript Summarizer.png') }}" alt="YouTube Summarizer">
+            <h2>ClipSynth</h2>
+            <p>Effortlessly condense lengthy YouTube videos into concise summaries, saving you valuable time and effort.</p>
+            <ul>
+                <li>> Extracts the most important points from transcripts</li>
+                <li>> Provides a clear understanding of video content</li>
+            </ul>
+            <a href="{{url_for('Transcript')}}"><button class="cta-button">Try it now</button></a>
+        </div>
+<!-- 
+        <div class="feature feature-right">
+            <img src="{{ url_for('static', filename='/images/3_Python Code Generation.png') }}" alt="Python Code Generator">
+            <h2>Code Generation</h2>
+            <p>Generate Python code quickly and efficiently, freeing up your time for higher-level tasks and creative problem-solving.</p>
+            <ul>
+                <li>> Boost Productivity</li>
+                <li>> Enhanced Accuracy with AI-powered code generation</li>
+            </ul>
+            <a href="{{url_for('Code_Gen')}}"><button class="cta-button">Start Coding</button></a>
+        </div> -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">AI Tools</a>
+            <a href="#">YouTube Summarizer</a>
+            <a href="#">Python Code Generator</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="social-media">
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">LinkedIn</a>
+        </div>
+        <p>© 2024 AI Tools. All rights reserved.</p>
+    </footer>
+
+    <script src="{{url_for('static', filename='/script/script.js')}}"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tool Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="transcript_summarizer.html">YouTube Transcript Summarizer</a></li>
+                <li><a href="code_generator.html">Python Code Generator</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome to the AI Tool Website</h1>
+        <p>This website features two powerful tools: a YouTube Transcript Summarizer and a Python Code Generator. Navigate to the respective pages to use the tools.</p>
+    </section>
+</body>
+</html> -->

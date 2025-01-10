@@ -1,0 +1,170 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: url('/static/images/Index1.png') no-repeat center center/cover;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    background-color: #f8f9fa;
+    padding: 3rem 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+textarea, input[type="text"], input[type="file"] {
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #363636;
+}
+
+/* #summary-result, #audio-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+} */
+
+
+/* OLD */
+/* .center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    background-color: #f0f0f0;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+#summary-result, #audio-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+} */
+
+
+/* NEW */
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    min-height: 80vh; /* Slightly reduce height to create a margin */
+    background-color: #495058; /* Dark blue color */
+    border-radius: 10px; /* Add rounded corners */
+    padding: 20px;
+    margin: 50px auto; /* Add margin to separate it from boundaries */
+    max-width: 800px; /* Restrict the width of the box */
+    box-shadow: 0 10px 200px rgba(255, 255, 255, 0.2); /* Add a shadow for emphasis */
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+#summary-result, #audio-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #2e2e2e;
+    border-radius: 5px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    max-width: 600px;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+.footer-links, .social-media, p{
+    text-align: center;
+    width: 100%;
+    margin: auto 0;
+    line-height: 1.6;
+}
+
+.footer-links a, .social-media a {
+    color: #ddd;
+    text-decoration: none;
+    margin: 0 10px;
+    
+}
+
+.footer-links a:hover, .social-media a:hover {
+    color: rgb(136, 136, 136);
+}
+
+.footer p {
+    margin-top: 10px;
+}
